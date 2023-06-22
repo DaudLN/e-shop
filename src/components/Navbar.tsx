@@ -1,6 +1,6 @@
-import { HStack, Spacer, Text } from '@chakra-ui/react';
-import ColorModeSwitch from './ColorModeSwitch';
+import { HStack, List, ListItem, Spacer } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
+import ColorModeSwitch from './ColorModeSwitch';
 import InCart from './InCart';
 
 const Navbar = () => {
@@ -14,12 +14,16 @@ const Navbar = () => {
       alignItems={'center'}
       spacing={3}
     >
-      <Link to='/'>
-        <Text fontSize='xl'>Home</Text>
-      </Link>
-      <Link to='/cart'>
-        <InCart />
-      </Link>
+      <List display='flex' dir='row'>
+        <ListItem fontSize='xl' mx={4}>
+          <Link to='/'>Home</Link>
+        </ListItem>
+        <ListItem>
+          <Link to='/cart'>
+            <InCart />
+          </Link>
+        </ListItem>
+      </List>
       <Spacer />
       <ColorModeSwitch />
     </HStack>

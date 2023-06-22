@@ -7,16 +7,16 @@ import {
   Flex,
   Heading,
   Image,
-  List,
-  ListItem,
   SimpleGrid,
   Stack,
   StackDivider,
   Text,
-  VStack
+  VStack,
 } from '@chakra-ui/react';
 import ItemCount from '../components/ItemCount';
 import Loading from '../components/Loading';
+import formatCurrency from '../utils/formatCurrency';
+import ProductAttributes from './ProductAttributes';
 
 export default function ProductDetail() {
   const { id } = useParams();
@@ -51,7 +51,7 @@ export default function ProductDetail() {
               {product.title}
             </Heading>
             <Text fontWeight={300} fontSize={'2xl'}>
-              ${product.price} USD
+              {formatCurrency(product.price)}
             </Text>
           </Box>
 
@@ -64,22 +64,12 @@ export default function ProductDetail() {
               <Text fontSize={'lg'}>{product.description}</Text>
             </VStack>
             <Box>
-              <Text
-                fontSize={{ base: '16px', lg: '18px' }}
-                fontWeight={'500'}
-                textTransform={'uppercase'}
-                mb={'4'}
-              >
-                Product Details
-              </Text>
-
-              <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>
-                <List spacing={2}>
-                  <ListItem>Ratings: {product.rating.count}</ListItem>
-                  <ListItem>Rating Avg: {product.rating.rate}</ListItem>
-                  <ListItem>Category: {product.category}</ListItem>
-                </List>
-              </SimpleGrid>
+              <ProductAttributes
+                ratingCount={product.rating.count}
+                ratingRate={product.rating.rate}
+                category={product.category}
+                title='Product Details'
+              />
             </Box>
           </Stack>
           <ItemCount product={product} />

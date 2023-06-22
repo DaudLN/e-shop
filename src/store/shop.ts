@@ -1,13 +1,8 @@
 import { create } from 'zustand';
 import { persist, devtools } from 'zustand/middleware';
+import CartItem from '../entity/CartItem';
 
-interface CartItem {
-  id: number;
-  title: string;
-  price: number;
-  image: string;
-  quantity: number;
-}
+
 
 interface CartStore {
   items: CartItem[];

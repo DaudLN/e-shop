@@ -1,15 +1,16 @@
-import { Spinner } from '@chakra-ui/react';
+import { Box, Spinner } from '@chakra-ui/react';
 
 const Loading = () => {
   return (
-    <Spinner
-      thickness='4px'
-      speed='0.65s'
-      emptyColor='gray.200'
-      color='blue.500'
-      size='xl'
-      justifySelf={'center'}
-    />
+    <Box textAlign='center' mt='30vh'>
+      <Spinner
+        thickness='4px'
+        speed='0.65s'
+        emptyColor='gray'
+        color='blue.300'
+        size='xl'
+      />
+    </Box>
   );
 };
 

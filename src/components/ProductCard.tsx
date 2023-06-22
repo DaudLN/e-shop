@@ -13,6 +13,7 @@ import {
 } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 import Product from '../entity/Product';
+import formatCurrency from '../utils/formatCurrency';
 import ItemCount from './ItemCount';
 import ProductRate from './ProductRate';
 
@@ -21,14 +22,14 @@ interface Props {
 }
 
 const ProductCard = ({ product }: Props) => {
+  const styles = {
+    transition: 'transform 0.15s ease-in-out',
+    ':hover': {
+      transform: 'scale(1.03)',
+    },
+  };
   return (
-    <Card
-      key={product.id}
-      _hover={{
-        transition: 'transform 0.15s ease-in-out',
-        transform: 'scale(1.03)',
-      }}
-    >
+    <Card key={product.id} as='article' sx={styles}>
       <CardBody>
         <Image
           src={product.image}
@@ -45,7 +46,7 @@ const ProductCard = ({ product }: Props) => {
           <HStack spacing={3} justify={'space-between'}>
             <Box>
               <Text color='blue.600' fontSize='2xl' mb={0}>
-                ${product.price}
+                {formatCurrency(product.price)}
               </Text>
               <Badge colorScheme='messenger' px={2} borderRadius={5}>
                 {product.category}

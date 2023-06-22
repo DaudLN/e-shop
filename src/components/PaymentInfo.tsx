@@ -1,19 +1,18 @@
 import {
   Avatar,
-  Box,
   Button,
   Card,
   CardBody,
   Flex,
   HStack,
-  Input,
-  InputGroup,
-  SkeletonCircle,
   Spacer,
   Text,
 } from '@chakra-ui/react';
 import useCartStore from '../store/shop';
 import formatCurrency from '../utils/formatCurrency';
+import CartPriceSummary from './CartPriceSummary';
+import PaymentCardSkeleton from './PaymentCardSkeleton';
+import PaymentForm from './PaymentForm';
 
 const PaymentInfo = () => {
   const items = useCartStore((s) => s.items);
@@ -34,60 +33,14 @@ const PaymentInfo = () => {
         <Text fontSize='sm' mb={3}>
           Card type
         </Text>
-        <Flex mb={4} gap={3} justify={'space-between'}>
-          <SkeletonCircle borderRadius={5} boxSize={'50px'} />
-          <SkeletonCircle borderRadius={5} boxSize={'50px'} />
-          <SkeletonCircle borderRadius={5} boxSize={'50px'} />
-          <SkeletonCircle borderRadius={5} boxSize={'50px'} />
-        </Flex>
-        <form>
-          <InputGroup mb={3}>
-            <Input
-              type='text'
-              variant='filled'
-              bg='blue.300'
-              placeholder='Name'
-            />
-          </InputGroup>
-
-          <Input
-            type='text'
-            mb={3}
-            variant='filled'
-            bg='blue.300'
-            placeholder='Name'
-          />
-          <HStack mb={3}>
-            <Input
-              type='text'
-              variant='filled'
-              bg='blue.300'
-              placeholder='Name'
-            />
-            <Input
-              type='text'
-              variant='filled'
-              bg='blue.300'
-              placeholder='Name'
-            />
-          </HStack>
-        </form>
-
+        <PaymentCardSkeleton />
+        <PaymentForm />
         <Flex direction='column' textAlign='start' gap={2} mb={4}>
-          <Box>
-            <HStack justify={'space-between'}>
-              <Text>Subtotal</Text>
-              <Text as='span'>{formatCurrency(totalPrice)}</Text>
-            </HStack>
-            <HStack justify={'space-between'}>
-              <Text>Shipping</Text>
-              <Text as='span'>{formatCurrency(shipping)}</Text>
-            </HStack>
-            <HStack justify={'space-between'}>
-              <Text>Total (Tax incl.)</Text>
-              <Text as='span'>{formatCurrency(total)}</Text>
-            </HStack>
-          </Box>
+          <CartPriceSummary
+            totalPrice={totalPrice}
+            shipping={shipping}
+            total={total}
+          />
         </Flex>
         <Button
           w='100%'

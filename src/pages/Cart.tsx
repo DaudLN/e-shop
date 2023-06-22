@@ -1,30 +1,11 @@
-import {
-  ChevronDownIcon,
-  ChevronLeftIcon,
-  ChevronUpIcon,
-} from '@chakra-ui/icons';
-import {
-  Box,
-  Button,
-  Card,
-  CardBody,
-  Flex,
-  HStack,
-  IconButton,
-  Image,
-  Stack,
-  Text,
-  VStack,
-} from '@chakra-ui/react';
-import { FaTrashAlt } from 'react-icons/fa';
+import { ChevronLeftIcon } from '@chakra-ui/icons';
+import { Box, Button, Flex, Text } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 import PaymentInfo from '../components/PaymentInfo';
 import useCartStore from '../store/shop';
+import Item from '../components/Item';
 const Cart = () => {
   const items = useCartStore((s) => s.items);
-  const removeItem = useCartStore((s) => s.removeItem);
-  const decreaseQuantity = useCartStore((s) => s.decreaseQuantity);
-  const increaseQuantity = useCartStore((s) => s.increaseQuantity);
   if (items.length > 0)
     return (
       <Flex
@@ -38,52 +19,10 @@ const Cart = () => {
           h={{ md: '80vh' }}
           w={{ base: '100%', md: '80%' }}
         >
-          {items.map((item, i) => (
-            <Card key={i} overflow='hidden' variant='outline' mb={3}>
-              <Image
-                objectFit='cover'
-                maxW={{ base: '100%', sm: '200px' }}
-                src={item.image}
-                alt={item.title}
-                boxSize='65px'
-              />
-              <Stack>
-                <CardBody>
-                  <HStack justifyContent='space-between'>
-                    <Box>
-                      <Link to={`/products/${item.id}`}>
-                        <Text fontSize='md' noOfLines={1}>
-                          {item.title}
-                        </Text>
-                      </Link>
-                    </Box>
-                    <Text>{item.quantity}</Text>
-                    <VStack spacing={0}>
-                      <ChevronUpIcon
-                        cursor={'pointer'}
-                        onClick={() => increaseQuantity(item.id)}
-                      />
-                      <ChevronDownIcon
-                        cursor={'pointer'}
-                        onClick={() => decreaseQuantity(item.id)}
-                      />
-                    </VStack>
-                    <Box>
-                      <IconButton
-                        icon={<FaTrashAlt />}
-                        aria-label='Delete'
-                        onClick={() => removeItem(item.id)}
-                        variant='ghost'
-                        colorScheme='red'
-                      />
-                    </Box>
-                  </HStack>
-                </CardBody>
-              </Stack>
-            </Card>
+          {items.map((item) => (
+            <Item key={item.id} item={item} />
           ))}
         </Box>
-
         <Box borderRadius={10}>
           <PaymentInfo />
         </Box>

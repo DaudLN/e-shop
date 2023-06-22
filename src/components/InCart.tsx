@@ -1,6 +1,6 @@
 import { Box, Icon, Text } from '@chakra-ui/react';
-import useCartStore from '../store/shop';
 import { FiShoppingCart } from 'react-icons/fi';
+import useCartStore from '../store/shop';
 
 const InCart = () => {
   const items = useCartStore((s) => s.items);

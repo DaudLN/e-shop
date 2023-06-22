@@ -7,7 +7,7 @@ const ProductsGrid = () => {
   const { data, isLoading } = useProducts();
   if (isLoading) return <Loading />;
   return (
-    <SimpleGrid columns={3} gap={5} minChildWidth={300} m={5}>
+    <SimpleGrid gap={5} minChildWidth={300} m={5} as='main'>
       {data?.map((product, index) => (
         <ProductCard key={index} product={product} />
       ))}

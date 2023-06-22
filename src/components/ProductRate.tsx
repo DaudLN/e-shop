@@ -1,5 +1,5 @@
 import { StarIcon } from '@chakra-ui/icons';
-import { HStack, VStack, Text } from '@chakra-ui/react';
+import { HStack, Text, VStack } from '@chakra-ui/react';
 import { FaThumbsUp } from 'react-icons/fa';
 
 interface Props {
