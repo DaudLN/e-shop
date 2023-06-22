@@ -2,8 +2,6 @@ import { create } from 'zustand';
 import { persist, devtools } from 'zustand/middleware';
 import CartItem from '../entity/CartItem';
 
-
-
 interface CartStore {
   items: CartItem[];
   addItem: (item: CartItem) => void;
