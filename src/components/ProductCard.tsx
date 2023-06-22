@@ -22,11 +22,17 @@ interface Props {
 
 const ProductCard = ({ product }: Props) => {
   return (
-    <Card key={product.id}>
+    <Card
+      key={product.id}
+      _hover={{
+        transition: 'transform 0.15s ease-in-out',
+        transform: 'scale(1.03)',
+      }}
+    >
       <CardBody>
         <Image
           src={product.image}
-          alt={product.image}
+          alt={product.title}
           borderRadius='lg'
           h={80}
           w={'100%'}
