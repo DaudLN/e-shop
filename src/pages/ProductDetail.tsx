@@ -16,7 +16,7 @@ import {
 import ItemCount from '../components/ItemCount';
 import Loading from '../components/Loading';
 import formatCurrency from '../utils/formatCurrency';
-import ProductAttributes from './ProductAttributes';
+import ProductAttributes from '../components/ProductAttributes';
 
 export default function ProductDetail() {
   const { id } = useParams();
