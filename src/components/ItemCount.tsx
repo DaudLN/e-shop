@@ -15,7 +15,7 @@ const ItemCount = ({ product }: Props) => {
   const item = items.find((item) => item.id === product.id);
   if (item)
     return (
-      <HStack justifySelf='center'  align='center' justify='center'>
+      <HStack justifySelf='center' align='center' justify='center'>
         <IconButton
           aria-label='Increase'
           icon={<ChevronUpIcon />}
@@ -33,8 +33,6 @@ const ItemCount = ({ product }: Props) => {
     <Button
       variant='outline'
       colorScheme='blue'
-      h={50}
-      fontSize={20}
       onClick={() =>
         addItem({
           id: product.id,
