@@ -12,7 +12,7 @@ import {
   Text,
 } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
-import Product from '../entity/Product';
+import Product from '../entities/Product';
 import formatCurrency from '../utils/formatCurrency';
 import ItemCount from './ItemCount';
 import ProductRate from './ProductRate';

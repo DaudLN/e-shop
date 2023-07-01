@@ -1,6 +1,6 @@
 import { ChevronDownIcon, ChevronUpIcon } from '@chakra-ui/icons';
 import { Button, HStack, IconButton, Text } from '@chakra-ui/react';
-import Product from '../entity/Product';
+import Product from '../entities/Product';
 import useCartStore from '../store/shop';
 
 interface Props {

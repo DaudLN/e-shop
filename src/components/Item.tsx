@@ -10,7 +10,7 @@ import {
 } from '@chakra-ui/react';
 import { FaTrashAlt } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-import CartItem from '../entity/CartItem';
+import CartItem from '../entities/CartItem';
 import useCartStore from '../store/shop';
 import IncreaseDecreaseItem from './IncreaseDecreaseItem';
 
