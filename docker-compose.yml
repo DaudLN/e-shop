@@ -1,0 +1,13 @@
+version: '3.9'
+
+services:
+  web:
+    container_name: e-shop
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: ./docker-entrypoint.sh
+    environment:
+      - API_URL=https://fakestoreapi.com
+    ports:
+      - 5173:5173
